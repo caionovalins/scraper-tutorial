@@ -1,3 +1,6 @@
 const potusScraper = require('./potusScraper')
+const redditScraper = require('./redditScraper')
 
-potusScraper()
+// potusScraper()
+
+redditScraper(50)
