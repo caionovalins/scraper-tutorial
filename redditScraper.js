@@ -42,4 +42,4 @@ const redditScraper = async (numPosts) => {
 
 }
 
-module.exports = redditScraper
+redditScraper(50)

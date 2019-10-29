@@ -1,8 +1,16 @@
 const rp = require('request-promise')
 const $ = require('cheerio')
-const potusParse = require('./potusParse')
 
 const url = 'https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States'
+
+const potusParse = url =>
+	rp(url).then(html => {
+		return {
+			name: $('.firstHeading', html).text(),
+			birthday: $('.bday', html).text()
+		}
+	})
+	.catch(err => {})
 
 const potusScraper = () => {
 	rp(url)
@@ -17,4 +25,4 @@ const potusScraper = () => {
 		.catch(err => console.log(err))
 }
 
-module.exports = potusScraper
+potusScraper()
